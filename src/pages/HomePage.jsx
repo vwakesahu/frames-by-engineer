@@ -1,9 +1,8 @@
-import React from 'react'
+import { ModeToggle } from "@/components/ModeToggle";
+import React from "react";
 
 const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
-}
+  return <div className="h-screen"> Homepage </div>;
+};
 
-export default HomePage
+export default HomePage;
