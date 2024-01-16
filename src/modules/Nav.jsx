@@ -18,6 +18,8 @@ import {
 import { ModeToggle } from "@/components/ModeToggle";
 import Image from "next/image";
 import { AvatarComp } from "@/components/Avatar";
+import { useStateValue } from "@/context/StateProvider";
+import { actionType } from "@/context/reducer";
 
 const components = [
   {
@@ -58,6 +60,22 @@ const components = [
 ];
 
 export function Nav() {
+
+  const [{ user }, dispatch] = useStateValue();
+
+  const [isMenu, setIsMenu] = React.useState(false);
+
+  
+
+  const logout = () => {
+    setIsMenu(false);
+    localStorage.clear();
+
+    dispatch({
+      type: actionType.SET_USER,
+      user: null,
+    });
+  };
   return (
     <div className="w-full px-6 flex items-center justify-between p-4 border-b fixed bg-background z-50">
       <div className="flex flex-col">
