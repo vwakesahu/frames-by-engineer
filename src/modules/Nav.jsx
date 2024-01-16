@@ -59,7 +59,7 @@ const components = [
 
 export function Nav() {
   return (
-    <div className="w-full flex items-center justify-between p-4 border-b fixed bg-background">
+    <div className="w-full px-6 flex items-center justify-between p-4 border-b fixed bg-background z-50">
       <div className="flex flex-col">
         <div className="flex items-end">
           <Image src={Logo} className="w-5 mb-3 " alt="logo" />
