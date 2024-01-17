@@ -3,9 +3,22 @@ import { useStateValue } from "@/context/StateProvider";
 import { app } from "../../firebase.config";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { actionType } from "@/context/reducer";
+import { useState } from "react";
 
 export function AvatarComp() {
   const [{ user }, dispatch] = useStateValue();
+  const [isMenu, setIsMenu] = useState(false);
+
+  const logout = () => {
+    setIsMenu(false);
+    localStorage.clear();
+
+    dispatch({
+      type: actionType.SET_USER,
+      user: null,
+    });
+  };
+
   const login = async () => {
     const firebaseAuth = getAuth(app);
     const provider = new GoogleAuthProvider();
@@ -24,13 +37,16 @@ export function AvatarComp() {
   };
 
   return (
-    <Avatar className="cursor-pointer">
-      <AvatarImage
-        src={user ? user.photoURL : "https://github.com/shadcn.png"}
-        alt="@shadcn"
-        onClick={login}
-      />
-      <AvatarFallback>CN</AvatarFallback>
-    </Avatar>
+    <div>
+      <Avatar className="cursor-pointer">
+        <AvatarImage
+          src={user ? user.photoURL : "https://github.com/shadcn.png"}
+          alt="@shadcn"
+          onClick={login}
+        />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      {isMenu && <div onClick={logout}>Logout</div>}
+    </div>
   );
 }
