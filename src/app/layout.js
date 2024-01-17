@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Nav } from "@/modules";
+import { Footer, Nav } from "@/modules";
 import { StateProvider } from "@/context/StateProvider";
 import reducer from "@/context/reducer";
 import { initialState } from "@/context/initialState";
@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
           <StateProvider reducer={reducer} initialState={initialState}>
             <Nav />
             <div className="p-4 pt-28">{children}</div>
+            <Footer />
           </StateProvider>
         </ThemeProvider>
       </body>
