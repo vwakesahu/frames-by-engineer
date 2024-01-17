@@ -2,11 +2,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Nav } from "@/modules";
+import { Footer, Nav } from "@/modules";
 import { StateProvider } from "@/context/StateProvider";
 import reducer from "@/context/reducer";
 import { initialState } from "@/context/initialState";
-import Footer from "@/modules/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
