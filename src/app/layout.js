@@ -6,6 +6,7 @@ import { Nav } from "@/modules";
 import { StateProvider } from "@/context/StateProvider";
 import reducer from "@/context/reducer";
 import { initialState } from "@/context/initialState";
+import Footer from "@/modules/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
           <StateProvider reducer={reducer} initialState={initialState}>
             <Nav />
             <div className="p-4 pt-28">{children}</div>
+            <Footer />
           </StateProvider>
         </ThemeProvider>
       </body>
