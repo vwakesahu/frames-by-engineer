@@ -93,7 +93,7 @@ export function Nav() {
       </div>
 
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="hidden sm:flex">
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
             <NavigationMenuContent>
