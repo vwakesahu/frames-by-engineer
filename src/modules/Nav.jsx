@@ -15,9 +15,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { ModeToggle } from "@/components/ModeToggle";
+import { AvatarComp, CartSheet, ModeToggle } from "@/components";
 import Image from "next/image";
-import { AvatarComp } from "@/components/Avatar";
 
 const components = [
   {
@@ -136,8 +135,8 @@ export function Nav() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex  gap-3">
-        <ModeToggle /> <AvatarComp />
+      <div className="flex items-center justify-center gap-3">
+        <ModeToggle /> <CartSheet /> <AvatarComp />
       </div>
     </div>
   );
