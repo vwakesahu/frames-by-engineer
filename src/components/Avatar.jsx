@@ -50,7 +50,7 @@ export function AvatarComp() {
       </Avatar>
 
       {isMenu && (
-        <div className='absolute '>
+        <div className='absolute md:hidden'>
           <div className='py-1'>
             <Link href="/categories">
               Getting started
