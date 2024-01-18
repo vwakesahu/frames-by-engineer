@@ -1,3 +1,4 @@
+import React,{ useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useStateValue } from "@/context/StateProvider";
 import { app } from "../../firebase.config";
@@ -6,6 +7,8 @@ import { actionType } from "@/context/reducer";
 
 export function AvatarComp() {
   const [{ user }, dispatch] = useStateValue();
+  const [isMenu, setIsMenu] = useState(false);
+
   const login = async () => {
     const firebaseAuth = getAuth(app);
     const provider = new GoogleAuthProvider();
@@ -24,13 +27,31 @@ export function AvatarComp() {
   };
 
   return (
-    <Avatar className="cursor-pointer">
-      <AvatarImage
-        src={user ? user.photoURL : "https://github.com/shadcn.png"}
-        alt="@shadcn"
-        onClick={login}
-      />
-      <AvatarFallback>CN</AvatarFallback>
-    </Avatar>
+    <div>
+      <Avatar className="cursor-pointer relative">
+        <AvatarImage
+          src={user ? user.photoURL : "https://github.com/shadcn.png"}
+          alt="@shadcn"
+          onClick={login}
+        />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+
+      {isMenu && (
+        <div className='absolute'>
+          <div className='py-1'>
+            <a href="#">
+              Getting started
+            </a>
+            <a href="#">
+              Components
+            </a>
+            <a href="#">
+              Documentation
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
