@@ -15,11 +15,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { ModeToggle } from "@/components/ModeToggle";
+import { AvatarComp, CartSheet, ModeToggle } from "@/components";
 import Image from "next/image";
-import { AvatarComp } from "@/components/Avatar";
-import { useStateValue } from "@/context/StateProvider";
-import { actionType } from "@/context/reducer";
 
 const components = [
   {
@@ -60,25 +57,12 @@ const components = [
 ];
 
 export function Nav() {
+  // const [isMenu, setIsMenu] = React.useState(false);
 
-  const [{ user }, dispatch] = useStateValue();
-
-  const [isMenu, setIsMenu] = React.useState(false);
-
-  
-
-  const logout = () => {
-    setIsMenu(false);
-    localStorage.clear();
-
-    dispatch({
-      type: actionType.SET_USER,
-      user: null,
-    });
-  };
   return (
     <div className="w-full px-6 flex items-center justify-between p-4 border-b fixed bg-background z-50">
-      <div className="flex flex-col">
+      <Link href="/">
+      <div className="flex flex-col cursor-pointer ">
         <div className="flex items-end">
           <Image src={Logo} className="w-5 mb-3 " alt="logo" />
           <p className="text-[2rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FEBBED] to-[#B977FE]">
@@ -91,6 +75,7 @@ export function Nav() {
           </p>
         </div>
       </div>
+      </Link>
 
       <NavigationMenu>
         <NavigationMenuList className="hidden sm:flex">
@@ -152,8 +137,8 @@ export function Nav() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex  gap-3">
-        <ModeToggle /> <AvatarComp />
+      <div className="flex items-center justify-center gap-3">
+        <ModeToggle /> <CartSheet /> <AvatarComp />
       </div>
     </div>
   );

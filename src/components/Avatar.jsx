@@ -4,10 +4,22 @@ import { useStateValue } from "@/context/StateProvider";
 import { app } from "../../firebase.config";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { actionType } from "@/context/reducer";
+import Link from 'next/link';
+
 
 export function AvatarComp() {
   const [{ user }, dispatch] = useStateValue();
   const [isMenu, setIsMenu] = useState(false);
+
+  const logout = () => {
+    setIsMenu(false);
+    localStorage.clear();
+
+    dispatch({
+      type: actionType.SET_USER,
+      user: null,
+    });
+  };
 
   const login = async () => {
     const firebaseAuth = getAuth(app);
@@ -28,7 +40,7 @@ export function AvatarComp() {
 
   return (
     <div>
-      <Avatar className="cursor-pointer relative">
+      <Avatar className="cursor-pointer ">
         <AvatarImage
           src={user ? user.photoURL : "https://github.com/shadcn.png"}
           alt="@shadcn"
@@ -38,17 +50,18 @@ export function AvatarComp() {
       </Avatar>
 
       {isMenu && (
-        <div className='absolute'>
+        <div className='absolute '>
           <div className='py-1'>
-            <a href="#">
+            <Link href="/categories">
               Getting started
-            </a>
-            <a href="#">
+            </Link>
+            <p onClick={logout}> Logout</p>
+            {/* <a href="#">
               Components
             </a>
             <a href="#">
               Documentation
-            </a>
+            </a> */}
           </div>
         </div>
       )}

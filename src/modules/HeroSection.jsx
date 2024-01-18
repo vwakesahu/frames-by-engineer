@@ -52,10 +52,11 @@ const HeroSection = () => {
           </div>
         </div>
 
+
         {/* Mobile */}
-        <Button className="mr-auto mt-8 text-lg  rounded-lg p-3 px-6 w-full  bg-gradient-to-r from-lightPink to-lightViolet font-medium text-white md:hidden mb-24">
+        {/* <Button className="mr-auto mt-8 text-lg  rounded-lg p-3 px-6 w-full  bg-gradient-to-r from-lightPink to-lightViolet font-medium text-white md:hidden mb-24">
           Buy Now
-        </Button>
+        </Button> */}
       </div>
     </section>
   );
