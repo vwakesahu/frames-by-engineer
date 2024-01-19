@@ -1,9 +1,11 @@
+import React,{ useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useStateValue } from "@/context/StateProvider";
 import { app } from "../../firebase.config";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { actionType } from "@/context/reducer";
-import { useState } from "react";
+import Link from 'next/link';
+
 
 export function AvatarComp() {
   const [{ user }, dispatch] = useStateValue();
@@ -38,7 +40,7 @@ export function AvatarComp() {
 
   return (
     <div>
-      <Avatar className="cursor-pointer">
+      <Avatar className="cursor-pointer ">
         <AvatarImage
           src={user ? user.photoURL : "https://github.com/shadcn.png"}
           alt="@shadcn"
@@ -46,7 +48,23 @@ export function AvatarComp() {
         />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      {isMenu && <div onClick={logout}>Logout</div>}
+
+      {isMenu && (
+        <div className='absolute md:hidden'>
+          <div className='py-1'>
+            <Link href="/categories">
+              Getting started
+            </Link>
+            <p onClick={logout}> Logout</p>
+            {/* <a href="#">
+              Components
+            </a>
+            <a href="#">
+              Documentation
+            </a> */}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

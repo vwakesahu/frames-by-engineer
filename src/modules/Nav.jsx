@@ -78,7 +78,8 @@ export function Nav() {
   };
   return (
     <div className="w-full px-6 flex items-center justify-between p-4 border-b fixed bg-background z-50">
-      <div className="flex flex-col">
+      <Link href="/">
+      <div className="flex flex-col cursor-pointer ">
         <div className="flex items-end">
           <Image src={Logo} className="w-5 mb-3 " alt="logo" />
           <p className="text-[2rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FEBBED] to-[#B977FE]">
@@ -91,6 +92,7 @@ export function Nav() {
           </p>
         </div>
       </div>
+      </Link>
 
       <NavigationMenu>
         <NavigationMenuList className="hidden sm:flex">
