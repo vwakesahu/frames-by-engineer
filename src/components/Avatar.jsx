@@ -1,11 +1,10 @@
-import React,{ useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useStateValue } from "@/context/StateProvider";
 import { app } from "../../firebase.config";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { actionType } from "@/context/reducer";
-import Link from 'next/link';
-
+import Link from "next/link";
 
 export function AvatarComp() {
   const [{ user }, dispatch] = useStateValue();
@@ -21,6 +20,10 @@ export function AvatarComp() {
     });
   };
 
+  // useEffect(() => {
+  //   logout();
+  // }, []);
+
   const login = async () => {
     const firebaseAuth = getAuth(app);
     const provider = new GoogleAuthProvider();
@@ -33,16 +36,18 @@ export function AvatarComp() {
         user: providerData[0],
       });
       localStorage.setItem("user", JSON.stringify(providerData[0]));
+      console.log(providerData[0]);
     } else {
+      console.log("here");
       setIsMenu(!isMenu);
     }
   };
 
   return (
-    <div className='relative '>
+    <div className="relative ">
       <Avatar className="cursor-pointer ">
         <AvatarImage
-          src={user ? user.photoURL : "https://github.com/shadcn.png"}
+          src={user ? user?.photoURL : "https://github.com/shadcn.png"}
           alt="@shadcn"
           onClick={login}
         />
@@ -50,19 +55,18 @@ export function AvatarComp() {
       </Avatar>
 
       {isMenu && (
-        <div className='absolute mt-3 right-3 top-7 cursor-pointer'>
-          <div className='py-1 flex flex-col md:hidden space-y-3 pl-4 pr-2 bg-muted-foreground'>
-            <Link href="/categories" >
-              Getting started
-            </Link>
-            <Link href="#" >
-              Components
-            </Link>
-            <Link href="#" >
-              Documentation
-            </Link>
+        <div className="absolute mt-3 right-2 top-10 md:top-11 cursor-pointer bg-muted border-foreground rounded-lg">
+          <div className="flex flex-col md:hidden space-y-3">
+            <Link href="/categories" className="rounded-t-lg px-6 py-3 hover:bg-muted-foreground">Getting started</Link>
+            <Link href="#" className="px-6 py-3 hover:bg-muted-foreground">Components</Link>
+            <Link href="#" className="px-6 py-3 hover:bg-muted-foreground">Documentation</Link>
           </div>
-          <p onClick={logout} className='bg-white px-6 py-3 text-black rounded-md mt-4 text-center hover:font-bold transition-all duration-200'> Logout</p>
+          <p
+            onClick={logout}
+            className="px-6 py-3 rounded-b-lg md:rounded-lg hover:bg-red-400 hover:text-foreground md:mt-0 text-center transition-all text-destructive bg-red-300 duration-200"
+          >
+            Logout
+          </p>
         </div>
       )}
     </div>
