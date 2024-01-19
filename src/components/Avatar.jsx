@@ -51,14 +51,14 @@ export function AvatarComp() {
 
       {isMenu && (
         <div className='absolute mt-3 right-3 top-7 cursor-pointer'>
-          <div className='py-1 flex flex-col md:hidden space-y-3 pl-4 pr-2'>
-            <Link href="/categories">
+          <div className='py-1 flex flex-col md:hidden space-y-3 pl-4 pr-2 bg-muted-foreground'>
+            <Link href="/categories" >
               Getting started
             </Link>
-            <Link href="#">
+            <Link href="#" >
               Components
             </Link>
-            <Link href="#">
+            <Link href="#" >
               Documentation
             </Link>
           </div>
