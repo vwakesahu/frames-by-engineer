@@ -39,7 +39,7 @@ export function AvatarComp() {
   };
 
   return (
-    <div>
+    <div className='relative '>
       <Avatar className="cursor-pointer ">
         <AvatarImage
           src={user ? user.photoURL : "https://github.com/shadcn.png"}
@@ -50,19 +50,19 @@ export function AvatarComp() {
       </Avatar>
 
       {isMenu && (
-        <div className='absolute md:hidden'>
-          <div className='py-1'>
+        <div className='absolute mt-3 right-3 top-7 cursor-pointer'>
+          <div className='py-1 flex flex-col md:hidden space-y-3 pl-4 pr-2'>
             <Link href="/categories">
               Getting started
             </Link>
-            <p onClick={logout}> Logout</p>
-            {/* <a href="#">
+            <Link href="#">
               Components
-            </a>
-            <a href="#">
+            </Link>
+            <Link href="#">
               Documentation
-            </a> */}
+            </Link>
           </div>
+          <p onClick={logout} className='bg-white px-6 py-3 text-black rounded-md mt-4 text-center hover:font-bold transition-all duration-200'> Logout</p>
         </div>
       )}
     </div>
