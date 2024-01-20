@@ -16,7 +16,7 @@ import { Loader } from "@/components";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../../firebase.config";
 
-const page = () => {
+const Page = () => {
   const [alertStatus, setAlertStatus] = useState("danger");
   const [fields, setFields] = useState(false);
   const [msg, setMsg] = useState(null);
@@ -348,4 +348,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
