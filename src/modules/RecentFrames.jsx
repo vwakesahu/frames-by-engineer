@@ -3,10 +3,10 @@ import { useStateValue } from "@/context/StateProvider";
 import React, { useEffect } from "react";
 
 const RecentFrames = () => {
-  const [{ frames }, dispatch] = useStateValue();
-  useEffect(() => {
-    console.log(frames);
-  }, [frames]);
+  // const [{ frames }, dispatch] = useStateValue();
+  // useEffect(() => {
+  //   console.log(frames);
+  // }, [frames]);
 
   return (
     <div>
