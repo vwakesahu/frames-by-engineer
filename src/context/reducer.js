@@ -1,6 +1,6 @@
 export const actionType = {
   SET_USER: "SET_USER",
-  SET_ITEM: "SET_ITEM",
+  SET_FRAMES: "SET_FRAMES",
 };
 
 const reducer = (state, action) => {
@@ -13,10 +13,10 @@ const reducer = (state, action) => {
         user: action.user,
       };
 
-    case actionType.SET_ITEM:
+    case actionType.SET_FRAMES:
       return {
         ...state,
-        items: action.items,
+        frames: action.frames,
       };
 
     default:
