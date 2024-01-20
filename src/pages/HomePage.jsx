@@ -5,16 +5,16 @@ import { actionType } from "@/context/reducer";
 import React, { useEffect } from "react";
 
 const HomePage = () => {
-  const [{ frames }, dispatch] = useStateValue();
+  // const [{ frames }, dispatch] = useStateValue();
 
   const fetchData = async () => {
     try {
       const data = await getAllFrames();
       console.log("Fetched data:", data);
-      dispatch({
-        type: actionType.SET_FRAMES,
-        frames: data,
-      });
+      // dispatch({
+      //   type: actionType.SET_FRAMES,
+      //   frames: data,
+      // });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
